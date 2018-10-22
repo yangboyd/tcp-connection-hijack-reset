@@ -201,7 +201,7 @@ def main(argv=None):
 
 	log.debug('Found connection: {0[0]}:{0[1]} -> {1[0]}:{1[1]}'.format(local, remote))
 
-	ipset_update('add', optz.ipset_name, *local)
+	ipset_update('add', optz.ipset_name, *remote)
 	try: TCPBreaker(port_local=local[1], port_remote=remote[1], timeout=True).run()
 	finally: ipset_update('del', optz.ipset_name, *local)
 
